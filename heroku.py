@@ -12,8 +12,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
-PORT = int(os.environ.get('PORT', '8443'))
-TOKEN = '849546896:AAHHyH1UvCRW85jBH9jgCGSUyBvyP9X65Sw'
+TOKEN = os.environ['TELEGRAM_TOKEN']
 
 def error(update, context):
     logger.warning('Update "%s" caused error "%s"', update, context.error)
@@ -25,6 +24,8 @@ def get_fact(update, context):
     update.message.reply_text(fact['text'])
 
 def main():
+    logger.info('Hola!')
+
     updater = Updater(TOKEN)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('fact', get_fact))

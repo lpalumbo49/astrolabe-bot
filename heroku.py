@@ -24,7 +24,7 @@ def get_fact(update, context):
     update.message.reply_text(fact['text'])
 
 def main():
-    logger.info('Hola!')
+    logger.info('Starting astrolabe-bot')
 
     updater = Updater(TOKEN)
     dp = updater.dispatcher
